@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Global styles={globalStyle} />
-      <Box display="flex" bg="aliceblue" w="100vw" alignItems="center" flexDirection="column" py="100px">
+      <Box display="flex" w="100vw" alignItems="center" flexDirection="column" py="100px">
         sample
       </Box>
     </>

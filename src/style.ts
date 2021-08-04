@@ -10,6 +10,7 @@ export const basicFont = css`
 
 export const globalStyle = css`
   body {
+    background-color: aliceblue;
     ${basicFont}
   }
 `;
