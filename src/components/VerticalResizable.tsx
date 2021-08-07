@@ -24,29 +24,20 @@ export const VerticalResizable = () => {
     const mouseUpListener = () => {
       isMousePressedRef.current = false;
     };
-    const mouseMoveListener = (event: MouseEvent) => {
+    const mouseMoveListener = (event: PointerEvent) => {
       if (isMousePressedRef.current) {
         if (dividerRef.current) {
           setUpH(event.y - 255);
         }
       }
     };
-    const touchMoveListener = (event: TouchEvent) => {
-      if (isMousePressedRef.current) {
-        if (dividerRef.current) {
-          setUpH(event.changedTouches[0].pageY - 255);
-        }
-      }
-    };
 
-    document.addEventListener('mouseup', mouseUpListener);
-    document.addEventListener('mousemove', mouseMoveListener);
-    document.addEventListener('touchmove', touchMoveListener);
-    document.addEventListener('touchend', mouseUpListener);
+    document.addEventListener('pointerup', mouseUpListener);
+    document.addEventListener('pointermove', mouseMoveListener);
 
     return () => {
-      document.removeEventListener('mouseup', mouseUpListener);
-      document.removeEventListener('mousemove', mouseMoveListener);
+      document.removeEventListener('pointerup', mouseUpListener);
+      document.removeEventListener('pointermove', mouseMoveListener);
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -70,13 +61,9 @@ export const VerticalResizable = () => {
           {starredDisplayed && Array.from(Array(50).keys()).map(value => <div key={value}>{`starred ${value}`}</div>)}
         </Box>
       </Box>
-      <Box ref={dividerRef} css={divider} onMouseDown={() => {
+      <Box ref={dividerRef} css={divider} onPointerDown={() => {
         isMousePressedRef.current = true;
-      }} onTouchStart={() =>{
-        isMousePressedRef.current = true;
-      }}
-
-      />
+      }} />
       <Box>
         <Flex fontSize="24px" h="40px">
           <Box>Boards</Box>
