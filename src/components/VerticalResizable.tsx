@@ -3,15 +3,15 @@ import { Box, Flex, Spacer } from '@chakra-ui/react';
 import { useEffect, useRef, useState } from 'react';
 
 const divider = css`
-  margin-top: 10px;
-  margin-bottom: 10px;
-  height: 3px;
+  margin: 20px 10px;
+  height: 30px;
   width: 100%;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: black;
+  border-bottom-color: darkgray;
   cursor: ns-resize;
   user-select: none;
+  touch-action: none;
 `;
 
 export const VerticalResizable = () => {
@@ -27,13 +27,22 @@ export const VerticalResizable = () => {
     const mouseMoveListener = (event: MouseEvent) => {
       if (isMousePressedRef.current) {
         if (dividerRef.current) {
-          setUpH(event.y - 160);
+          setUpH(event.y - 255);
+        }
+      }
+    };
+    const touchMoveListener = (event: TouchEvent) => {
+      if (isMousePressedRef.current) {
+        if (dividerRef.current) {
+          setUpH(event.changedTouches[0].pageY - 255);
         }
       }
     };
 
     document.addEventListener('mouseup', mouseUpListener);
     document.addEventListener('mousemove', mouseMoveListener);
+    document.addEventListener('touchmove', touchMoveListener);
+    document.addEventListener('touchend', mouseUpListener);
 
     return () => {
       document.removeEventListener('mouseup', mouseUpListener);
@@ -63,14 +72,18 @@ export const VerticalResizable = () => {
       </Box>
       <Box ref={dividerRef} css={divider} onMouseDown={() => {
         isMousePressedRef.current = true;
-      }} />
+      }} onTouchStart={() =>{
+        isMousePressedRef.current = true;
+      }}
+
+      />
       <Box>
         <Flex fontSize="24px" h="40px">
           <Box>Boards</Box>
         </Flex>
         <Box css={css`height: calc(100vh - 200px - ${starredDisplayed ? upH : 35}px);
           overflow-y: auto`}>
-          {Array.from(Array(100).keys()).map(value => <div key={value}>{`TreeItem ${value}`}</div>)}
+          {Array.from(Array(30).keys()).map(value => <div key={value}>{`TreeItem ${value}`}</div>)}
         </Box>
       </Box>
     </Box>
