@@ -1,6 +1,10 @@
+// eslint-disable-next-line no-use-before-define
+import React from 'react';
 import { Box, Flex, Text } from '@chakra-ui/react';
+import { jsx } from '@emotion/react';
+import JSX = jsx.JSX;
 
-export const FlexDemo = () => {
+export const FlexDemo = (): JSX.Element => {
   return (
     <Flex w="90%" h="500px" gridGap="10px">
       <Box bg="green.300" flex="1 1 auto" minW="0" rounded="md">
@@ -11,9 +15,7 @@ export const FlexDemo = () => {
             </Box>
           </Box>
           <Flex w="100%" h="60px" bg="gray.600" justify="center" align="center" rounded="md">
-            <Text color="gray.50">
-              通話メニュー
-            </Text>
+            <Text color="gray.50">通話メニュー</Text>
           </Flex>
         </Box>
       </Box>

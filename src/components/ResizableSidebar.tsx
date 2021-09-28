@@ -1,6 +1,7 @@
+// eslint-disable-next-line no-use-before-define
+import React, { useEffect, useRef, useState } from 'react';
 import { css } from '@emotion/react';
 import { Box, Flex } from '@chakra-ui/react';
-import { useEffect, useRef, useState } from 'react';
 
 const divider = css`
   margin-left: 10px;
@@ -17,7 +18,7 @@ const divider = css`
   user-select: none;
 `;
 
-export const ResizableSidebar = () => {
+export const ResizableSidebar = (): JSX.Element => {
   const isMousePressedRef = useRef(false);
   const dividerRef = useRef<HTMLDivElement>(null);
   const [leftW, setLeftW] = useState(200);
@@ -46,21 +47,20 @@ export const ResizableSidebar = () => {
     return () => {
       document.removeEventListener('mouseup', mouseUpListener);
       document.removeEventListener('mousemove', mouseMoveListener);
-    }
-
+    };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Flex w="1200px" h="720px" bg="gray.200" p="10px">
-      <Box w={`${leftW}px`}>
-        Aside
-      </Box>
-      <Box ref={dividerRef} css={divider} onMouseDown={() => {
-        isMousePressedRef.current = true;
-      }} />
-      <Box w={`${1200 - leftW}px`}>
-        Main
-      </Box>
+      <Box w={`${leftW}px`}>Aside</Box>
+      <Box
+        ref={dividerRef}
+        css={divider}
+        onMouseDown={() => {
+          isMousePressedRef.current = true;
+        }}
+      />
+      <Box w={`${1200 - leftW}px`}>Main</Box>
     </Flex>
   );
 };

@@ -1,6 +1,7 @@
+// eslint-disable-next-line no-use-before-define
+import React, { useEffect, useRef, useState } from 'react';
 import { css } from '@emotion/react';
 import { Box, Flex, Spacer } from '@chakra-ui/react';
-import { useEffect, useRef, useState } from 'react';
 
 const divider = css`
   margin: 20px 10px;
@@ -14,7 +15,7 @@ const divider = css`
   touch-action: none;
 `;
 
-export const VerticalResizable = () => {
+export const VerticalResizable = (): JSX.Element => {
   const isMousePressedRef = useRef(false);
   const dividerRef = useRef<HTMLDivElement>(null);
   const [upH, setUpH] = useState(300);
@@ -43,7 +44,7 @@ export const VerticalResizable = () => {
 
   return (
     <Box w="300px" h="100vh" bg="gray.200" p="10px">
-      <Box h={`150px`} borderBottom="solid 1px" mb="10px">
+      <Box h="150px" borderBottom="solid 1px" mb="10px">
         <Flex fontSize="24px" h="40px">
           <Box>Crossing Boards</Box>
         </Flex>
@@ -58,19 +59,29 @@ export const VerticalResizable = () => {
           <Box onClick={() => setStarredDisplayed(!starredDisplayed)}>x</Box>
         </Flex>
         <Box h={starredDisplayed ? `${upH}px` : '0px'} overflowY="auto">
-          {starredDisplayed && Array.from(Array(50).keys()).map(value => <div key={value}>{`starred ${value}`}</div>)}
+          {starredDisplayed && Array.from(Array(50).keys()).map((value) => <div key={value}>{`starred ${value}`}</div>)}
         </Box>
       </Box>
-      <Box ref={dividerRef} css={divider} onPointerDown={() => {
-        isMousePressedRef.current = true;
-      }} />
+      <Box
+        ref={dividerRef}
+        css={divider}
+        onPointerDown={() => {
+          isMousePressedRef.current = true;
+        }}
+      />
       <Box>
         <Flex fontSize="24px" h="40px">
           <Box>Boards</Box>
         </Flex>
-        <Box css={css`height: calc(100vh - 200px - ${starredDisplayed ? upH : 35}px);
-          overflow-y: auto`}>
-          {Array.from(Array(30).keys()).map(value => <div key={value}>{`TreeItem ${value}`}</div>)}
+        <Box
+          css={css`
+            height: calc(100vh - 200px - ${starredDisplayed ? upH : 35}px);
+            overflow-y: auto;
+          `}
+        >
+          {Array.from(Array(30).keys()).map((value) => (
+            <div key={value}>{`TreeItem ${value}`}</div>
+          ))}
         </Box>
       </Box>
     </Box>
