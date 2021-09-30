@@ -1,5 +1,4 @@
 /* eslint-disable react/require-default-props */
-// eslint-disable-next-line no-use-before-define
 import React, { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { Flex } from '@chakra-ui/react';
 import { OriginalSelectBoxOptions } from 'components/OriginalSelectBoxDemo/OriginalSelectBoxOptions';

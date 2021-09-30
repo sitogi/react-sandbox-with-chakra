@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-use-before-define
 import React from 'react';
 import { Global } from '@emotion/react';
 import { globalStyle } from 'style';

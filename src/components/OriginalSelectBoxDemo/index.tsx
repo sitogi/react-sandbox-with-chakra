@@ -1,5 +1,3 @@
-/* eslint-disable react/require-default-props */
-// eslint-disable-next-line no-use-before-define
 import React, { useState } from 'react';
 import { Box } from '@chakra-ui/react';
 import { OriginalSelectBox } from 'components/OriginalSelectBoxDemo/OriginalSelectBox';

@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-// eslint-disable-next-line no-use-before-define
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Flex, Text } from '@chakra-ui/react';
 

@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-use-before-define
 import React from 'react';
 import { css } from '@emotion/react';
 import { Box, VStack } from '@chakra-ui/react';

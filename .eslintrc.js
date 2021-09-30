@@ -52,6 +52,7 @@ module.exports = {
     'newline-before-return': 'error',
     'no-console': 'warn',
     'require-yield': 'error',
+    'no-use-before-define': 'off',
 
     // @typescript-eslint
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -89,11 +90,7 @@ module.exports = {
     'react/jsx-uses-vars': 'error',
     'react/prop-types': 'off',
     'react/prefer-stateless-function': 'off',
-    'react/jsx-props-no-spreading': ['error',
-      {
-      'html': 'ignore'
-      }
-    ],
+    'react/jsx-props-no-spreading': 'off',
 
     // react hooks
     'react-hooks/rules-of-hooks': 'error',
