@@ -1,7 +1,5 @@
 import React from 'react';
 import { Box, Flex, Text } from '@chakra-ui/react';
-import { jsx } from '@emotion/react';
-import JSX = jsx.JSX;
 
 export const FlexDemo = (): JSX.Element => {
   return (
